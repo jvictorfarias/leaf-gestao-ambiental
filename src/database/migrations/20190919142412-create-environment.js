@@ -2,7 +2,7 @@ const uuid = require('uuid/v4');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('institution', {
+    return queryInterface.createTable('environment', {
       id: {
         type: Sequelize.UUID,
         allowNull: false,
@@ -14,7 +14,23 @@ module.exports = {
         allowNull: false,
       },
       desc: {
-        type: Sequelize.STRING,
+        type: Sequelize.TEXT,
+      },
+      institution_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'institution',
+          key: 'id',
+        },
+      },
+      department_id: {
+        type: Sequelize.UUID,
+        allowNull: false,
+        references: {
+          model: 'department',
+          key: 'id',
+        },
       },
       createdAt: {
         type: Sequelize.DATE,
@@ -28,6 +44,6 @@ module.exports = {
   },
 
   down: queryInterface => {
-    return queryInterface.dropTable('institution');
+    return queryInterface.dropTable('environment');
   },
 };
