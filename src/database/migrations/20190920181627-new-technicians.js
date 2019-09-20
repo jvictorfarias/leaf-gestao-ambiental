@@ -9,6 +9,10 @@ module.exports = {
         primaryKey: true,
         defaultValue: uuid(),
       },
+      name: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
       email: {
         type: Sequelize.STRING,
         allowNull: false,
@@ -18,34 +22,28 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      name: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       qualification: {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      function: {
-        type: Sequelize.STRING,
-        allowNull: false,
+      func: {
+        type: Sequelize.TEXT,
       },
       admin: {
         type: Sequelize.BOOLEAN,
         allowNull: false,
         defaultValue: false,
       },
-      createdAt: {
+      created_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
-      updatedAt: {
+      updated_at: {
         type: Sequelize.DATE,
         allowNull: false,
       },
     });
   },
-
   down: queryInterface => {
     return queryInterface.dropTable('technicians');
   },

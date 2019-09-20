@@ -1,4 +1,4 @@
-import { Model, Sequelize } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 class Technician extends Model {
   static init(sequelize) {
@@ -6,15 +6,21 @@ class Technician extends Model {
       {
         name: Sequelize.STRING,
         email: Sequelize.STRING,
+        password: Sequelize.VIRTUAL,
         password_hash: Sequelize.STRING,
         qualification: Sequelize.STRING,
-        function: Sequelize.TEXT,
+        func: Sequelize.TEXT,
         admin: Sequelize.BOOLEAN,
       },
       {
         sequelize,
       }
     );
+
+    this.addHook('beforeSave', async technician => {
+      technician.password_hash = technician.password;
+    });
+    return this;
   }
 }
 
