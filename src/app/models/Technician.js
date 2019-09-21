@@ -1,4 +1,5 @@
 import Sequelize, { Model } from 'sequelize';
+import bcrypt from 'bcrypt';
 
 class Technician extends Model {
   static init(sequelize) {
@@ -18,8 +19,11 @@ class Technician extends Model {
     );
 
     this.addHook('beforeSave', async technician => {
-      technician.password_hash = technician.password;
+      if (technician.password) {
+        technician.password_hash = await bcrypt.hash(technician.password, 8);
+      }
     });
+
     return this;
   }
 }

@@ -10,9 +10,14 @@ const routes = new Router();
 // Middlewares
 routes.use(AccessLog);
 
+// Technicians
 routes.post('/technicians/create', TechnicianController.store);
+// routes.put('/technicians/update', TechnicianController.update);
+// Institutions
+routes.post('/institutions/create', InstitutionController.store);
+// Departments
 // routes.post('/departments', DepartmentController);
-// routes.post('/institutions', InstitutionController);
+// Environments
 // routes.post('/environments', EnvironmentController);
 
 export default routes;

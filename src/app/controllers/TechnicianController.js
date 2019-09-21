@@ -42,6 +42,11 @@ class TechnicianController {
       admin,
     });
   }
+
+  /* async update(req, res){
+    const schema =
+  }
+  */
 }
 
 export default new TechnicianController();
