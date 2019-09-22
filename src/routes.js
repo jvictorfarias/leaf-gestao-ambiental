@@ -1,20 +1,25 @@
 import { Router } from 'express';
-import AccessLog from './app/middlewares/AccessLog';
+import accessLog from './app/middlewares/accessLog';
+import authMiddleware from './app/middlewares/auth';
+
 import TechnicianController from './app/controllers/TechnicianController';
-import DepartmentController from './app/controllers/DepartmentController';
+// import DepartmentController from './app/controllers/DepartmentController';
 import InstitutionController from './app/controllers/InstitutionController';
-import EnvironmentController from './app/controllers/EnvironmentController';
+// import EnvironmentController from './app/controllers/EnvironmentController';
+import SessionController from './app/controllers/SessionController';
 
 const routes = new Router();
 
-// Middlewares
-routes.use(AccessLog);
+// Global Middlewares
+routes.use(accessLog);
 
 // Technicians
-routes.post('/technicians/create', TechnicianController.store);
-// routes.put('/technicians/update', TechnicianController.update);
+routes.post('/technicians', TechnicianController.store);
+routes.put('/technicians', authMiddleware, TechnicianController.update);
+// Sessions
+routes.post('/technicians/sessions', SessionController.store);
 // Institutions
-routes.post('/institutions/create', InstitutionController.store);
+routes.post('/institutions', InstitutionController.store);
 // Departments
 // routes.post('/departments', DepartmentController);
 // Environments

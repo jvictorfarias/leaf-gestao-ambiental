@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+
 import Institution from '../models/Institution';
 
 class InstitutionController {
