@@ -6,13 +6,19 @@ class Environment extends Model {
       {
         name: Sequelize.STRING,
         desc: Sequelize.TEXT,
-        institution_id: Sequelize.UUID,
-        department_id: Sequelize.UUID,
       },
       {
         sequelize,
       }
     );
+    return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Department, {
+      foreignKey: 'department_id',
+      as: 'department',
+    });
   }
 }
 

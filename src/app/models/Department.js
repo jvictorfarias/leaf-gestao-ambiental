@@ -6,12 +6,20 @@ class Department extends Model {
       {
         name: Sequelize.STRING,
         desc: Sequelize.TEXT,
-        institution_id: Sequelize.UUID,
       },
       {
         sequelize,
       }
     );
+    return this;
+  }
+
+  static associate(models) {
+    this.belongsTo(models.Institution, {
+      foreignKey: 'institution_id',
+      as: 'institution',
+    });
+    this.hasMany(models.Environment);
   }
 }
 

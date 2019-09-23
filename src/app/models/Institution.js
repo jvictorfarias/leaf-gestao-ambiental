@@ -11,6 +11,12 @@ class Institution extends Model {
         sequelize,
       }
     );
+
+    return this;
+  }
+
+  static associate(models) {
+    this.hasMany(models.Department);
   }
 }
 
