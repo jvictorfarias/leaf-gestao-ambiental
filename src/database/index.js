@@ -4,8 +4,9 @@ import Technician from '../app/models/Technician';
 import Institution from '../app/models/Institution';
 import Department from '../app/models/Department';
 import Environment from '../app/models/Environment';
+import File from '../app/models/File';
 
-const models = [Technician, Institution, Department, Environment];
+const models = [Technician, Institution, Department, Environment, File];
 
 class Database {
   constructor() {
