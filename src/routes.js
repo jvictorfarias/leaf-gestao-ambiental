@@ -18,6 +18,7 @@ const upload = multer(multerConfig);
 // Global Middlewares
 routes.use(accessLog);
 
+// Stakeholder
 // Technicians
 routes.post('/technicians', TechnicianController.store);
 routes.put('/technicians', authMiddleware, TechnicianController.update);

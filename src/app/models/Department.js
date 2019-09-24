@@ -17,7 +17,7 @@ class Department extends Model {
   static associate(models) {
     this.belongsTo(models.Institution, {
       foreignKey: 'institution_id',
-      as: 'institution',
+      as: 'institution_photo',
     });
     this.hasMany(models.Environment);
   }
