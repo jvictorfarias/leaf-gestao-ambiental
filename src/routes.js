@@ -1,4 +1,7 @@
 import { Router } from 'express';
+import multer from 'multer';
+import multerConfig from './config/multer';
+
 import accessLog from './app/middlewares/accessLog';
 import authMiddleware from './app/middlewares/auth';
 
@@ -10,6 +13,7 @@ import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 
 const routes = new Router();
+const upload = multer(multerConfig);
 
 // Global Middlewares
 routes.use(accessLog);
@@ -29,5 +33,10 @@ routes.post('/departments', authMiddleware, DepartmentController.store);
 routes.post('/environments', authMiddleware, EnvironmentController.store);
 
 // File Handle
-routes.post('/files', authMiddleware, FileController.store);
+routes.post(
+  '/files',
+  upload.single('file'),
+  authMiddleware,
+  FileController.store
+);
 export default routes;
