@@ -28,10 +28,13 @@ routes.post('/technicians/sessions', SessionController.store);
 // Entities
 // Institutions
 routes.post('/institutions', authMiddleware, InstitutionController.store);
+routes.put('/institutions', authMiddleware, InstitutionController.update);
 // Departments
 routes.post('/departments', authMiddleware, DepartmentController.store);
+routes.put('/departments', authMiddleware, DepartmentController.update);
 // Environments
 routes.post('/environments', authMiddleware, EnvironmentController.store);
+routes.put('/environments', authMiddleware, EnvironmentController.update);
 
 // File Handle
 routes.post(

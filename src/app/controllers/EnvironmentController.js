@@ -20,6 +20,29 @@ class EnvironmentController {
       desc,
     });
   }
+
+  async update(req, res) {
+    const schema = Yup.object().shape({
+      id: Yup.string().required(),
+      name: Yup.string(),
+      desc: Yup.string(),
+    });
+
+    if (!(await schema.isValid(req.body))) {
+      return res.status(400).json({ error: 'Data validation failed' });
+    }
+
+    const { id, name, desc } = req.body;
+
+    const environment = await Environment.findByPk(id);
+
+    await environment.update(name, desc);
+
+    return res.status(200).json({
+      name,
+      desc,
+    });
+  }
 }
 
 export default new EnvironmentController();
