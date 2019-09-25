@@ -1,4 +1,4 @@
-import { Model, Sequelize } from 'sequelize';
+import Sequelize, { Model } from 'sequelize';
 
 class Environment extends Model {
   static init(sequelize) {
@@ -22,7 +22,7 @@ class Environment extends Model {
 
     this.belongsTo(models.File, {
       foreignKey: 'photo_id',
-      as: 'photo',
+      as: 'department_photo',
     });
   }
 }
