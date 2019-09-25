@@ -37,7 +37,7 @@ class DepartmentController {
 
     const department = await Department.findByPk(id);
 
-    await department.update(name, desc);
+    await department.update({ name, desc });
 
     return res.status(200).json({
       name,

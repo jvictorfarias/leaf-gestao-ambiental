@@ -39,7 +39,7 @@ class InstitutionController {
 
     const institution = await Institution.findByPk(id);
 
-    await institution.update(name, desc, initials);
+    await institution.update({ name, desc, initials });
 
     return res.status(200).json({
       name,

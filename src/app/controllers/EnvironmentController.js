@@ -36,7 +36,7 @@ class EnvironmentController {
 
     const environment = await Environment.findByPk(id);
 
-    await environment.update(name, desc);
+    await environment.update({ name, desc });
 
     return res.status(200).json({
       name,
