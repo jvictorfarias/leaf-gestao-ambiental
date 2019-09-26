@@ -29,13 +29,18 @@ routes.post('/technicians/sessions', SessionController.store);
 // Institutions
 routes.post('/institutions', authMiddleware, InstitutionController.store);
 routes.put('/institutions', authMiddleware, InstitutionController.update);
+routes.get('/institutions', authMiddleware, InstitutionController.index);
 // Departments
 routes.post('/departments', authMiddleware, DepartmentController.store);
 routes.put('/departments', authMiddleware, DepartmentController.update);
+routes.get('/departments', authMiddleware, DepartmentController.index);
 // Environments
 routes.post('/environments', authMiddleware, EnvironmentController.store);
 routes.put('/environments', authMiddleware, EnvironmentController.update);
-
+/**
+ *  Still testing
+ * routes.get('/environments', authMiddleware, EnvironmentController.index);
+ */
 // File Handle
 routes.post(
   '/files',

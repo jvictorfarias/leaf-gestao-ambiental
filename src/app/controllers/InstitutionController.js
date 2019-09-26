@@ -1,8 +1,30 @@
 import * as Yup from 'yup';
 
 import Institution from '../models/Institution';
+import Department from '../models/Department';
+import File from '../models/File';
 
 class InstitutionController {
+  async index(req, res) {
+    const institutions = await Institution.findAll({
+      attributes: ['id', 'name', 'desc', 'initials'],
+      include: [
+        {
+          model: File,
+          as: 'institution_image',
+          attributes: ['id', 'path', 'url'],
+        },
+
+        {
+          model: Department,
+          attributes: ['id', 'name', 'desc'],
+        },
+      ],
+    });
+
+    return res.status(200).json(institutions);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),

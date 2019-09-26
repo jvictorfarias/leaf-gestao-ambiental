@@ -1,7 +1,34 @@
 import * as Yup from 'yup';
 import Environment from '../models/Environment';
+import Department from '../models/Department';
+import File from '../models/File';
 
 class EnvironmentController {
+  /**
+   * Still testing
+   * @param {*} req
+   * @param {*} res
+   */
+  async index(req, res) {
+    const environments = Environment.findAll({
+      attributes: ['name', 'desc'],
+      include: [
+        {
+          model: Department,
+          as: 'department',
+          attributes: ['name, desc'],
+        },
+        {
+          model: File,
+          as: 'image',
+          attributes: ['name', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.status(200).json(environments);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),
