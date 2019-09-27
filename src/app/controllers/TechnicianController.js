@@ -5,14 +5,6 @@ import File from '../models/File';
 
 class TechnicianController {
   async index(req, res) {
-    const { admin } = await Technician.findByPk(req.technicianId, {
-      attributes: ['admin'],
-    });
-
-    if (!admin) {
-      return res.status(401).json({ error: 'Not authorized' });
-    }
-
     const technicians = await Technician.findAll({
       attributes: ['id', 'name', 'qualification', 'func', 'admin'],
       include: [

@@ -2,9 +2,12 @@ import { Router } from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
 
+// Middlewares
 import accessLog from './app/middlewares/accessLog';
 import authMiddleware from './app/middlewares/auth';
+import adminMiddleware from './app/middlewares/admin';
 
+// Controllers
 import TechnicianController from './app/controllers/TechnicianController';
 import DepartmentController from './app/controllers/DepartmentController';
 import InstitutionController from './app/controllers/InstitutionController';
@@ -19,29 +22,67 @@ const upload = multer(multerConfig);
 routes.use(accessLog);
 
 // Stakeholder
-// Technicians
-routes.post('/technicians', TechnicianController.store);
-routes.put('/technicians', authMiddleware, TechnicianController.update);
-routes.get('/technicians', authMiddleware, TechnicianController.index);
+
 // Sessions
 routes.post('/technicians/sessions', SessionController.store);
 
 // Entities
+
+// Technicians
+routes.post('/technicians', TechnicianController.store);
+routes.put('/technicians', authMiddleware, TechnicianController.update);
+routes.get(
+  '/technicians',
+  authMiddleware,
+  adminMiddleware,
+  TechnicianController.index
+);
+
 // Institutions
-routes.post('/institutions', authMiddleware, InstitutionController.store);
-routes.put('/institutions', authMiddleware, InstitutionController.update);
+routes.post(
+  '/institutions',
+  authMiddleware,
+  adminMiddleware,
+  InstitutionController.store
+);
+routes.put(
+  '/institutions',
+  authMiddleware,
+  adminMiddleware,
+  InstitutionController.update
+);
 routes.get('/institutions', authMiddleware, InstitutionController.index);
+
 // Departments
-routes.post('/departments', authMiddleware, DepartmentController.store);
-routes.put('/departments', authMiddleware, DepartmentController.update);
+routes.post(
+  '/departments',
+  authMiddleware,
+  adminMiddleware,
+  DepartmentController.store
+);
+routes.put(
+  '/departments',
+  authMiddleware,
+  adminMiddleware,
+  DepartmentController.update
+);
 routes.get('/departments', authMiddleware, DepartmentController.index);
+
 // Environments
-routes.post('/environments', authMiddleware, EnvironmentController.store);
-routes.put('/environments', authMiddleware, EnvironmentController.update);
-/**
- *  Still testing
- * routes.get('/environments', authMiddleware, EnvironmentController.index);
- */
+routes.post(
+  '/environments',
+  authMiddleware,
+  adminMiddleware,
+  EnvironmentController.store
+);
+routes.put(
+  '/environments',
+  authMiddleware,
+  adminMiddleware,
+  EnvironmentController.update
+);
+routes.get('/environments', authMiddleware, EnvironmentController.index);
+
 // File Handle
 routes.post(
   '/files',

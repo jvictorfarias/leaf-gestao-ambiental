@@ -22,7 +22,7 @@ class Environment extends Model {
 
     this.belongsTo(models.File, {
       foreignKey: 'image_id',
-      as: 'department_image',
+      as: 'environment_image',
     });
   }
 }

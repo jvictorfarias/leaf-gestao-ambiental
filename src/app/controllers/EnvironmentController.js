@@ -4,28 +4,22 @@ import Department from '../models/Department';
 import File from '../models/File';
 
 class EnvironmentController {
-  /**
-   * Still testing
-   * @param {*} req
-   * @param {*} res
-   */
   async index(req, res) {
-    const environments = Environment.findAll({
+    const environments = await Environment.findAll({
       attributes: ['name', 'desc'],
       include: [
         {
           model: Department,
           as: 'department',
-          attributes: ['name, desc'],
+          attributes: ['name', 'desc'],
         },
         {
           model: File,
-          as: 'image',
+          as: 'environment_image',
           attributes: ['name', 'path', 'url'],
         },
       ],
     });
-
     return res.status(200).json(environments);
   }
 
