@@ -17,6 +17,7 @@ class DepartmentController {
         {
           model: Environment,
           attributes: ['id', 'name', 'desc'],
+          as: 'environments',
         },
         {
           model: File,

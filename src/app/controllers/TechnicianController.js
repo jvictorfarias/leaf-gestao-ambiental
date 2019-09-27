@@ -1,8 +1,32 @@
 import * as Yup from 'yup';
 
 import Technician from '../models/Technician';
+import File from '../models/File';
 
 class TechnicianController {
+  async index(req, res) {
+    const { admin } = await Technician.findByPk(req.technicianId, {
+      attributes: ['admin'],
+    });
+
+    if (!admin) {
+      return res.status(401).json({ error: 'Not authorized' });
+    }
+
+    const technicians = await Technician.findAll({
+      attributes: ['id', 'name', 'qualification', 'func', 'admin'],
+      include: [
+        {
+          model: File,
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+
+    return res.status(200).json(technicians);
+  }
+
   async store(req, res) {
     const schema = Yup.object().shape({
       name: Yup.string().required(),

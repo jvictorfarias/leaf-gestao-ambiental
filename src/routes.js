@@ -22,6 +22,7 @@ routes.use(accessLog);
 // Technicians
 routes.post('/technicians', TechnicianController.store);
 routes.put('/technicians', authMiddleware, TechnicianController.update);
+routes.get('/technicians', authMiddleware, TechnicianController.index);
 // Sessions
 routes.post('/technicians/sessions', SessionController.store);
 

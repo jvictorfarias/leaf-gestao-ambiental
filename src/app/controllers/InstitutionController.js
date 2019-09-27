@@ -14,10 +14,10 @@ class InstitutionController {
           as: 'institution_image',
           attributes: ['id', 'path', 'url'],
         },
-
         {
           model: Department,
           attributes: ['id', 'name', 'desc'],
+          as: 'departments',
         },
       ],
     });

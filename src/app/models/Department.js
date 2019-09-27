@@ -23,7 +23,7 @@ class Department extends Model {
       foreignKey: 'image_id',
       as: 'department_image',
     });
-    this.hasMany(models.Environment);
+    this.hasMany(models.Environment, { as: 'environments' });
   }
 }
 
