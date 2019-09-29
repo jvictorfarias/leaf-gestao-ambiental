@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import routes from './routes';
+import log from './app/middlewares/log';
 
 import './database';
 
@@ -18,6 +19,7 @@ class App {
       '/files',
       express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
     );
+    this.server.use(log('combined'));
   }
 
   routes() {

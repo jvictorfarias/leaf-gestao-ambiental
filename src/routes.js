@@ -2,8 +2,7 @@ import { Router } from 'express';
 import multer from 'multer';
 import multerConfig from './config/multer';
 
-// Middlewares
-import accessLog from './app/middlewares/accessLog';
+// Rule Middlewares
 import authMiddleware from './app/middlewares/auth';
 import adminMiddleware from './app/middlewares/admin';
 
@@ -17,11 +16,6 @@ import FileController from './app/controllers/FileController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
-
-// Global Middlewares
-routes.use(accessLog);
-
-// Stakeholder
 
 // Sessions
 routes.post('/technicians/sessions', SessionController.store);

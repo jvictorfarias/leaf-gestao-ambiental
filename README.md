@@ -5,4 +5,4 @@
 
 ## Sistema de Gestão e Análise de Risco Ambiental
 
-Integração entre sistemas do IFCE e UFC
+Sistema para gerenciamento de riscos ambientais em ambientes públicos.
