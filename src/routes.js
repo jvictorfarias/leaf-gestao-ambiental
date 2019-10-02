@@ -14,6 +14,12 @@ import EnvironmentController from './app/controllers/EnvironmentController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
 import AspectController from './app/controllers/AspectController';
+import ImpactController from './app/controllers/ImpactController';
+
+// import CauseController from './app/controllers/CauseController';
+// import ControlController from './app/controllers/ControlController';
+// import ActionController from './app/controllers/ActionController';
+import AspectEnvsController from './app/controllers/AspectEnvsController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -79,9 +85,28 @@ routes.put(
 routes.get('/environments', authMiddleware, EnvironmentController.index);
 
 // Aspects
-routes.get('/environments/aspects', AspectController.index);
+routes.get('/aspects', AspectController.index);
 routes.post('/aspects', AspectController.store);
 
+// Impacts
+routes.get('/impacts', ImpactController.index);
+routes.post('/impacts', ImpactController.store);
+/**
+// Causes
+routes.get('/causes', CauseController.index);
+routes.post('/causes', CauseController.store);
+
+// Controls
+routes.get('/controls', ControlController.index);
+routes.post('/controls', ControlController.store);
+
+// Actions
+routes.get('/actions', ActionController.index);
+routes.post('/actions', ActionController.store);
+*/
+
+// Aspects && Environments join table
+routes.post('/environments/variables', AspectEnvsController.store);
 // File Handle
 routes.post(
   '/files',

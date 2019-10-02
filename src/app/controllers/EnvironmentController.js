@@ -2,6 +2,8 @@ import * as Yup from 'yup';
 import Environment from '../models/Environment';
 import Department from '../models/Department';
 import File from '../models/File';
+import Aspect from '../models/Aspect';
+import AspectsEnvs from '../models/AspectsEnvs';
 
 class EnvironmentController {
   async index(req, res) {
@@ -12,6 +14,16 @@ class EnvironmentController {
           model: Department,
           as: 'department',
           attributes: ['name', 'desc'],
+        },
+        {
+          model: Aspect,
+          as: 'aspects',
+          attributes: ['name', 'desc'],
+          through: {
+            model: AspectsEnvs,
+            key: 'aspect_id',
+            attributes: [],
+          },
         },
         {
           model: File,

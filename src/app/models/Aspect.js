@@ -21,6 +21,8 @@ class Aspect extends Model {
       otherKey: 'environment_id',
       as: 'environments',
     });
+
+    this.hasMany(models.Impact, { as: 'impacts' });
   }
 }
 

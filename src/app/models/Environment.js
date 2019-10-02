@@ -22,8 +22,8 @@ class Environment extends Model {
 
     this.belongsToMany(models.Aspect, {
       through: 'aspects_envs',
-      foreignKey: 'aspect_id',
-      otherKey: 'environment_id',
+      foreignKey: 'environment_id',
+      otherKey: 'aspect_id',
       as: 'aspects',
     });
 
