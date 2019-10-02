@@ -5,9 +5,25 @@ import Technician from '../app/models/Technician';
 import Institution from '../app/models/Institution';
 import Department from '../app/models/Department';
 import Environment from '../app/models/Environment';
+import Aspect from '../app/models/Aspect';
+import Impact from '../app/models/Impact';
+import Cause from '../app/models/Cause';
+import Control from '../app/models/Control';
+import Action from '../app/models/Action';
 import File from '../app/models/File';
 
-const models = [Technician, Institution, Department, Environment, File];
+const models = [
+  Technician,
+  Institution,
+  Department,
+  Environment,
+  Aspect,
+  Impact,
+  Cause,
+  Control,
+  Action,
+  File,
+];
 
 class Database {
   constructor() {

@@ -20,6 +20,13 @@ class Environment extends Model {
       as: 'department',
     });
 
+    this.belongsToMany(models.Aspect, {
+      through: 'aspect_env',
+      foreignKey: 'aspect_id',
+      otherKey: 'environment_id',
+      as: 'aspects',
+    });
+
     this.belongsTo(models.File, {
       foreignKey: 'image_id',
       as: 'environment_image',

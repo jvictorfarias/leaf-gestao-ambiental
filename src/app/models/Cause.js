@@ -1,6 +1,6 @@
 import Sequelize, { Model } from 'sequelize';
 
-class Aspect extends Model {
+class Cause extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -14,13 +14,8 @@ class Aspect extends Model {
   }
 
   static associate(models) {
-    this.belongsToMany(models.Environment, {
-      through: 'aspect_env',
-      foreignKey: 'aspect_id',
-      otherKey: 'environment_id',
-      as: 'environments',
-    });
+    this.belongsTo(models.Impact, { foreignKey: 'impact_id', as: 'impact' });
   }
 }
 
-export default Aspect;
+export default Cause;
