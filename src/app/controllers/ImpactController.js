@@ -1,6 +1,9 @@
 import * as Yup from 'yup';
 import Impact from '../models/Impact';
 import Aspect from '../models/Aspect';
+import Cause from '../models/Cause';
+import Control from '../models/Control';
+import Action from '../models/Action';
 
 class ImpactController {
   async index(req, res) {
@@ -11,6 +14,21 @@ class ImpactController {
           model: Aspect,
           foreignKey: 'aspect_id',
           as: 'aspect',
+          attributes: ['name', 'desc'],
+        },
+        {
+          model: Cause,
+          as: 'cause_impact',
+          attributes: ['name', 'desc'],
+        },
+        {
+          model: Control,
+          as: 'control_impact',
+          attributes: ['name', 'desc'],
+        },
+        {
+          model: Action,
+          as: 'action_impact',
           attributes: ['name', 'desc'],
         },
       ],

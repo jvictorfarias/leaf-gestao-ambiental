@@ -36,7 +36,11 @@ const ReviewSchema = new mongoose.Schema(
           required: false,
         },
 
-        cause: {},
+        cause: {
+          type: String,
+        },
+        control: {},
+        action: {},
       },
     },
   },
