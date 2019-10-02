@@ -11,6 +11,7 @@ import Cause from '../app/models/Cause';
 import Control from '../app/models/Control';
 import Action from '../app/models/Action';
 import File from '../app/models/File';
+import AspectsEnvs from '../app/models/AspectsEnvs';
 
 const models = [
   Technician,
@@ -23,6 +24,7 @@ const models = [
   Control,
   Action,
   File,
+  AspectsEnvs,
 ];
 
 class Database {

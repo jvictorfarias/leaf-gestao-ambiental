@@ -13,6 +13,7 @@ import InstitutionController from './app/controllers/InstitutionController';
 import EnvironmentController from './app/controllers/EnvironmentController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
+import AspectController from './app/controllers/AspectController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -76,6 +77,10 @@ routes.put(
   EnvironmentController.update
 );
 routes.get('/environments', authMiddleware, EnvironmentController.index);
+
+// Aspects
+routes.get('/environments/aspects', AspectController.index);
+routes.post('/aspects', AspectController.store);
 
 // File Handle
 routes.post(

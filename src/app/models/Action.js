@@ -11,6 +11,8 @@ class Action extends Model {
         sequelize,
       }
     );
+
+    return this;
   }
 
   static associate(models) {
