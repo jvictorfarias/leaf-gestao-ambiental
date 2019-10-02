@@ -3,9 +3,6 @@ import Aspect from '../models/Aspect';
 import Environment from '../models/Environment';
 import AspectsEnvs from '../models/AspectsEnvs';
 import Impact from '../models/Impact';
-// import Cause from '../models/Cause';
-// import Control from '../models/Control';
-// import Action from '../models/Action';
 
 class AspectController {
   async index(req, res) {

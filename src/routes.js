@@ -13,12 +13,13 @@ import InstitutionController from './app/controllers/InstitutionController';
 import EnvironmentController from './app/controllers/EnvironmentController';
 import SessionController from './app/controllers/SessionController';
 import FileController from './app/controllers/FileController';
+
+// Variables Controllers
 import AspectController from './app/controllers/AspectController';
 import ImpactController from './app/controllers/ImpactController';
-
-// import CauseController from './app/controllers/CauseController';
-// import ControlController from './app/controllers/ControlController';
-// import ActionController from './app/controllers/ActionController';
+import CauseController from './app/controllers/CauseController';
+import ControlController from './app/controllers/ControlController';
+import ActionController from './app/controllers/ActionController';
 import AspectEnvsController from './app/controllers/AspectEnvsController';
 
 const routes = new Router();
@@ -91,7 +92,7 @@ routes.post('/aspects', AspectController.store);
 // Impacts
 routes.get('/impacts', ImpactController.index);
 routes.post('/impacts', ImpactController.store);
-/**
+
 // Causes
 routes.get('/causes', CauseController.index);
 routes.post('/causes', CauseController.store);
@@ -103,7 +104,6 @@ routes.post('/controls', ControlController.store);
 // Actions
 routes.get('/actions', ActionController.index);
 routes.post('/actions', ActionController.store);
-*/
 
 // Aspects && Environments join table
 routes.post('/environments/variables', AspectEnvsController.store);
