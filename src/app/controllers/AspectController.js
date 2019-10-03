@@ -3,6 +3,9 @@ import Aspect from '../models/Aspect';
 import Environment from '../models/Environment';
 import AspectsEnvs from '../models/AspectsEnvs';
 import Impact from '../models/Impact';
+import Cause from '../models/Cause';
+import Control from '../models/Control';
+import Action from '../models/Action';
 
 class AspectController {
   async index(req, res) {
@@ -23,6 +26,23 @@ class AspectController {
           model: Impact,
           as: 'impacts',
           attributes: ['name', 'desc'],
+          include: [
+            {
+              model: Cause,
+              as: 'cause_impact',
+              attributes: ['name', 'desc'],
+            },
+            {
+              model: Control,
+              as: 'control_impact',
+              attributes: ['name', 'desc'],
+            },
+            {
+              model: Action,
+              as: 'action_impact',
+              attributes: ['name', 'desc'],
+            },
+          ],
         },
       ],
     });

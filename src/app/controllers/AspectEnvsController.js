@@ -19,6 +19,13 @@ class AspectEnvsController {
       environment_id,
     });
   }
+
+  async index(req, res) {
+    const aspectsEnvs = await AspectEnvs.findAll({
+      attributes: ['aspect_id', 'environment_id'],
+    });
+    return res.status(200).json(aspectsEnvs);
+  }
 }
 
 export default new AspectEnvsController();

@@ -35,12 +35,52 @@ const ReviewSchema = new mongoose.Schema(
           type: String,
           required: false,
         },
-
-        cause: {
-          type: String,
+        gravity: {
+          type: Number,
+          required: true,
         },
-        control: {},
-        action: {},
+        cause: {
+          name: {
+            type: String,
+            required: true,
+          },
+          desc: {
+            type: String,
+            required: false,
+          },
+          ocurrency: {
+            type: Number,
+            required: true,
+          },
+        },
+        control: {
+          name: {
+            type: String,
+            required: true,
+          },
+          desc: {
+            type: String,
+            required: false,
+          },
+          actual_control: {
+            type: Number,
+            required: true,
+          },
+        },
+        action: {
+          name: {
+            type: String,
+            required: true,
+          },
+          desc: {
+            type: String,
+            required: false,
+          },
+          implementation: {
+            type: Number,
+            required: true,
+          },
+        },
       },
     },
   },

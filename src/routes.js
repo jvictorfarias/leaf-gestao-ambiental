@@ -85,6 +85,8 @@ routes.put(
 );
 routes.get('/environments', authMiddleware, EnvironmentController.index);
 
+// Variables Routes
+
 // Aspects
 routes.get('/aspects', AspectController.index);
 routes.post('/aspects', AspectController.store);
@@ -107,6 +109,8 @@ routes.post('/actions', ActionController.store);
 
 // Aspects && Environments join table
 routes.post('/environments/variables', AspectEnvsController.store);
+routes.get('/environments/variables', AspectEnvsController.index);
+
 // File Handle
 routes.post(
   '/files',
