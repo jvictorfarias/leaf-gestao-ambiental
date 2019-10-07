@@ -1,4 +1,5 @@
 import Sequelize from 'sequelize';
+import mongoose from 'mongoose';
 import databaseConfig from '../config/database';
 
 import Technician from '../app/models/Technician';
@@ -30,6 +31,7 @@ const models = [
 class Database {
   constructor() {
     this.init();
+    this.mongo();
   }
 
   // Connection with the database e load models
@@ -39,6 +41,14 @@ class Database {
     models
       .map(model => model.init(this.connection))
       .map(model => model.associate && model.associate(this.connection.models));
+  }
+
+  model() {
+    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: true,
+    });
   }
 }
 

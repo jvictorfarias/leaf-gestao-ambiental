@@ -17,7 +17,7 @@ const ReviewSchema = new mongoose.Schema(
       required: false,
     },
 
-    analyze: {
+    analysis: {
       aspect: {
         type: String,
         required: true,
