@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import express from 'express';
 import path from 'path';
 import routes from './routes';
@@ -19,7 +20,7 @@ class App {
       '/files',
       express.static(path.resolve(__dirname, '..', 'tmp', 'uploads'))
     );
-    this.server.use(log('combined'));
+    this.server.use(log('tiny'));
   }
 
   routes() {

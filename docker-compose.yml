@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: leaf
+    ports:
+      - '15432:5432'
+    container_name: pg-leaf
+
+  mongo:
+    image: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: mongodb
+      MONGO_INITDB_ROOT_PASSWORD: leaf
+    ports:
+      - '37017:27017'
+    container_name: mongodb-leaf
