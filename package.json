@@ -4,14 +4,23 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/server.js"
+    "start": "node src/server.js",
+    "dev": "nodemon src/server.js --ignore __tests__",
+    "test": "NODE_ENV=test jest"
+  },
+  "jest": {
+    "transform": {
+      ".(js|jsx|ts|tsx)": "@sucrase/jest-plugin"
+    }
   },
   "devDependencies": {
+    "@sucrase/jest-plugin": "^2.0.0",
     "eslint": "^6.3.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.9.0",
     "nodemon": "^1.19.2",
     "prettier": "^1.18.2",
     "sequelize-cli": "^5.5.1",

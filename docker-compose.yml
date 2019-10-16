@@ -1,6 +1,10 @@
 version: '3'
 
 services:
+  leaf-server:
+    build: .
+    ports:
+      - '3333:3333'
   postgres:
     image: postgres
     environment:

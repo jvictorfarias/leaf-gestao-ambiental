@@ -36,14 +36,17 @@ class ReviewController {
       return res.status(400).json({ error: 'Data validation failed' });
     }
 
-    const review = await Review.create(
-      {
-        technician_id: req.technicianId,
-      },
-      req.body
-    );
+    req.body.technician_id = req.technicianId;
+
+    const review = await Review.create(req.body);
 
     return res.status(200).json(review);
+  }
+
+  async index(req, res) {
+    const reviews = await Review.find();
+
+    return res.json(reviews);
   }
 }
 

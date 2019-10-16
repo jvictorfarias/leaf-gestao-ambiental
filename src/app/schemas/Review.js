@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const ReviewSchema = new mongoose.Schema(
+const Review = new mongoose.Schema(
   {
     technician_id: {
       type: String,
@@ -48,7 +48,7 @@ const ReviewSchema = new mongoose.Schema(
             type: String,
             required: false,
           },
-          ocurrency: {
+          occurrency: {
             type: Number,
             required: true,
           },
@@ -89,4 +89,4 @@ const ReviewSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model('Review', ReviewSchema);
+export default mongoose.model('Review', Review);

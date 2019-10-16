@@ -21,6 +21,7 @@ import CauseController from './app/controllers/CauseController';
 import ControlController from './app/controllers/ControlController';
 import ActionController from './app/controllers/ActionController';
 import AspectEnvsController from './app/controllers/AspectEnvsController';
+import ReviewController from './app/controllers/ReviewController';
 
 const routes = new Router();
 const upload = multer(multerConfig);
@@ -89,27 +90,59 @@ routes.get('/environments', authMiddleware, EnvironmentController.index);
 
 // Aspects
 routes.get('/aspects', AspectController.index);
-routes.post('/aspects', AspectController.store);
+routes.post(
+  '/aspects',
+  authMiddleware,
+  adminMiddleware,
+  AspectController.store
+);
 
 // Impacts
 routes.get('/impacts', ImpactController.index);
-routes.post('/impacts', ImpactController.store);
+routes.post(
+  '/impacts',
+  authMiddleware,
+  adminMiddleware,
+  ImpactController.store
+);
 
 // Causes
-routes.get('/causes', CauseController.index);
-routes.post('/causes', CauseController.store);
+routes.get('/causes', authMiddleware, CauseController.index);
+routes.post('/causes', authMiddleware, adminMiddleware, CauseController.store);
 
 // Controls
-routes.get('/controls', ControlController.index);
-routes.post('/controls', ControlController.store);
+routes.get('/controls', authMiddleware, ControlController.index);
+routes.post(
+  '/controls',
+  authMiddleware,
+  adminMiddleware,
+  ControlController.store
+);
 
 // Actions
-routes.get('/actions', ActionController.index);
-routes.post('/actions', ActionController.store);
+routes.get('/actions', authMiddleware, ActionController.index);
+routes.post(
+  '/actions',
+  authMiddleware,
+  adminMiddleware,
+  ActionController.store
+);
 
 // Aspects && Environments join table
-routes.post('/environments/variables', AspectEnvsController.store);
-routes.get('/environments/variables', AspectEnvsController.index);
+routes.post(
+  '/environments/variables',
+  authMiddleware,
+  adminMiddleware,
+  AspectEnvsController.store
+);
+routes.get(
+  '/environments/variables',
+  authMiddleware,
+  AspectEnvsController.index
+);
+
+// Reviews
+routes.post('/reviews', authMiddleware, ReviewController.store);
 
 // File Handle
 routes.post(

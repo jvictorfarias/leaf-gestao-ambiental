@@ -29,17 +29,17 @@ class AspectController {
           include: [
             {
               model: Cause,
-              as: 'cause_impact',
+              as: 'cause',
               attributes: ['name', 'desc'],
             },
             {
               model: Control,
-              as: 'control_impact',
+              as: 'control',
               attributes: ['name', 'desc'],
             },
             {
               model: Action,
-              as: 'action_impact',
+              as: 'action',
               attributes: ['name', 'desc'],
             },
           ],

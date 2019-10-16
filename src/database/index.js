@@ -43,11 +43,13 @@ class Database {
       .map(model => model.associate && model.associate(this.connection.models));
   }
 
-  model() {
+  mongo() {
     this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: true,
+      user: process.env.MONGO_USER,
+      pass: process.env.MONGO_PASS,
     });
   }
 }
