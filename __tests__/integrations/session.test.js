@@ -13,6 +13,7 @@ describe('Authentication', () => {
       },
     };
     const technician = await TechnicianController.store(req, err => {
+      // eslint-disable-next-line no-console
       console.log(err);
     });
 

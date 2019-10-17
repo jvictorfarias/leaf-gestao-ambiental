@@ -3,21 +3,45 @@ version: '3'
 services:
   leaf-server:
     build: .
+    volumes:
+      - .:/app
     ports:
       - '3333:3333'
+    links:
+      - postgres
+      - mongo
+    depends_on:
+      - postgres
+      - mongo
+    command: ['./entrypoint.sh']
+    networks:
+      - app_net
+
   postgres:
     image: postgres
     environment:
       POSTGRES_PASSWORD: leaf
     ports:
-      - '15432:5432'
+      - '5432:5432'
+    volumes:
+      - ./data:/data/pg-db
     container_name: pg-leaf
+    networks:
+      - app_net
 
   mongo:
     image: mongo
     environment:
-      MONGO_INITDB_ROOT_USERNAME: mongodb
-      MONGO_INITDB_ROOT_PASSWORD: leaf
+      MONGODB_USER: mongodb
+      MONGODB_PASS: leaf
     ports:
-      - '37017:27017'
+      - '27017:27017'
+    volumes:
+      - ./data:/mongo-db
     container_name: mongodb-leaf
+    networks:
+      - app_net
+
+networks:
+  app_net:
+    driver: bridge
