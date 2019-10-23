@@ -13,7 +13,6 @@ services:
     depends_on:
       - postgres
       - mongo
-    command: ['./entrypoint.sh']
     networks:
       - app_net
 

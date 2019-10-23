@@ -3,7 +3,7 @@ require('dotenv').config({
 });
 
 module.exports = {
-  dialect: 'postgres',
+  dialect: process.env.DB_DIALECT,
   // storage: './__tests__/database.sqlite',
   host: process.env.DB_HOST,
   username: process.env.DB_USER,
