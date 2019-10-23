@@ -594,7 +594,7 @@
       },
       "body": {
         "mimeType": "application/json",
-        "text": "{\n\t\"name\": \"João Victor Farias\",\n\t\"email\": \"victorfarias.new@gmail.com\",\n\t\"oldPassword\": \"final2masquerade\",\n\t\"password\": \"12345678\",\n\t\"passwordConfirmation\": \"12345678\",\n\t\"qualification\": \"IT Professional\",\n\t\"func\": \"Develop the backend\",\n\t\"admin\": true\n}"
+        "text": "{\n\t\"name\": \"João Victor Farias\",\n\t\"email\": \"victorfarias.new@gmail.com\",\n\t\"oldPassword\": \"\",\n\t\"password\": \"12345678\",\n\t\"passwordConfirmation\": \"12345678\",\n\t\"qualification\": \"IT Professional\",\n\t\"func\": \"Develop the backend\",\n\t\"admin\": true\n}"
       },
       "created": 1569011531567,
       "description": "",
