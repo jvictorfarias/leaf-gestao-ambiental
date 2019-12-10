@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Image,
@@ -9,12 +9,17 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import logo from '../assets/logo.png';
+import logo from '../../../assets/icon.png';
+import './index.css';
 
-export default function Login({ navigation }) {
+export default function Login() {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState(null);
+
+  async function handleSubmit() {
+    return null;
+  }
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -38,7 +43,7 @@ export default function Login({ navigation }) {
           style={styles.input}
           placeholder="Senha"
           placeholderTextColor="#999"
-          secureTextEntry={true}
+          secureTextEntry
           autoCapitalize="none"
           autoCorrect={false}
           value={password}
