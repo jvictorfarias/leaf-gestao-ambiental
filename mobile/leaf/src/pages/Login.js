@@ -9,8 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import logo from '../../../assets/icon.png';
-import './index.css';
+import logo from '../../assets/icon.png';
 
 export default function Login() {
   const [id, setId] = useState('');
