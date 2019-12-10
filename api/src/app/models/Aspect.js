@@ -17,7 +17,7 @@ class Aspect extends Model {
   static associate(models) {
     this.belongsToMany(models.Environment, {
       through: 'aspects_envs',
-      foreignKey: 'aspect_id',
+      foreignKey: 'id',
       otherKey: 'environment_id',
       as: 'environments',
     });
