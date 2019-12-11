@@ -23,14 +23,13 @@ export default function Login() {
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
       <Image source={logo} />
-
       <View style={styles.form}>
         <Text style={styles.label}>Identificação</Text>
         <TextInput
           style={styles.input}
-          placeholder="Matrícula/SIAPE"
+          placeholder="Email"
           placeholderTextColor="#999"
-          keyboardType="numeric"
+          keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
           value={id}
