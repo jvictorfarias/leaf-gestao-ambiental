@@ -7,17 +7,54 @@ import {
   StyleSheet,
   KeyboardAvoidingView,
   TouchableOpacity,
+  AsyncStorage,
+  Alert,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import logo from '../../assets/icon.png';
+import api from '../services/api';
 
-export default function Login() {
-  const [id, setId] = useState('');
+export default function Login({ navigation }) {
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [type, setType] = useState(null);
 
   async function handleSubmit() {
-    return null;
+    if (password === '') {
+      Alert.alert('Senha em branco!');
+      return false;
+    }
+    if (email === '') {
+      Alert.alert('Digite seu email!');
+      return false;
+    }
+
+    try {
+      const response = await api.post('/session', { email, password, type });
+
+      const { token } = response.data;
+      await AsyncStorage.setItem('tokenSession', token);
+    } catch (error) {
+      if (error.status === 401) {
+        Alert.alert('Usuário não encontrado!');
+        return false;
+      }
+      if (error.status === 403) {
+        Alert.alert('Credenciais Incorretas!');
+        return false;
+      }
+
+      if (error.status === 400) {
+        Alert.alert('Servidor Offline');
+        return false;
+      }
+
+      if (error.status === 500) {
+        Alert.alert('Servidor está instável.');
+        return false;
+      }
+    }
+    navigation.navigate('ManagementDisciplines');
   }
 
   return (
@@ -32,8 +69,8 @@ export default function Login() {
           keyboardType="email-address"
           autoCapitalize="none"
           autoCorrect={false}
-          value={id}
-          onChangeText={setId}
+          value={email}
+          onChangeText={setEmail}
         />
 
         <Text style={styles.label}>Senha</Text>
