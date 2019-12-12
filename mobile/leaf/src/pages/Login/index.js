@@ -11,8 +11,8 @@ import {
   Alert,
 } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
-import logo from '../../assets/icon.png';
-import api from '../services/api';
+import logo from '../../../assets/icon.png';
+import api from '../../services/api';
 
 export default function Login({ navigation }) {
   const [email, setEmail] = useState('');
@@ -55,7 +55,68 @@ export default function Login({ navigation }) {
       }
     }
     navigation.navigate('ManagementDisciplines');
+
+    return true;
   }
+
+  const styles = StyleSheet.create({
+    container: {
+      backgroundColor: '#1b405e',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+
+    label: {
+      fontWeight: 'bold',
+      color: '#444',
+      marginBottom: 8,
+    },
+
+    form: {
+      backgroundColor: '#fff',
+      marginTop: 25,
+      alignSelf: 'stretch',
+      paddingHorizontal: 30,
+      borderRadius: 4,
+      marginHorizontal: 25,
+      paddingVertical: 25,
+    },
+    input: {
+      borderWidth: 1,
+      borderColor: '#ddd',
+      borderRadius: 2,
+      paddingHorizontal: 20,
+      fontSize: 16,
+      color: '#444',
+      height: 44,
+      marginBottom: 15,
+    },
+    inputCaptcha: {
+      borderWidth: 1,
+      borderColor: '#ddd',
+      borderRadius: 2,
+      height: 44,
+      alignSelf: 'stretch',
+      paddingHorizontal: 20,
+      marginRight: 105,
+      fontSize: 16,
+      color: '#444',
+      marginBottom: 15,
+    },
+    button: {
+      height: 42,
+      backgroundColor: '#00ff00',
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 2,
+    },
+    buttonText: {
+      color: '#FFF',
+      fontWeight: 'bold',
+      fontSize: 16,
+    },
+  });
 
   return (
     <KeyboardAvoidingView behavior="padding" style={styles.container}>
@@ -106,62 +167,3 @@ export default function Login({ navigation }) {
     </KeyboardAvoidingView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#1b405e',
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-
-  label: {
-    fontWeight: 'bold',
-    color: '#444',
-    marginBottom: 8,
-  },
-
-  form: {
-    backgroundColor: '#fff',
-    marginTop: 25,
-    alignSelf: 'stretch',
-    paddingHorizontal: 30,
-    borderRadius: 4,
-    marginHorizontal: 25,
-    paddingVertical: 25,
-  },
-  input: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 2,
-    paddingHorizontal: 20,
-    fontSize: 16,
-    color: '#444',
-    height: 44,
-    marginBottom: 15,
-  },
-  inputCaptcha: {
-    borderWidth: 1,
-    borderColor: '#ddd',
-    borderRadius: 2,
-    height: 44,
-    alignSelf: 'stretch',
-    paddingHorizontal: 20,
-    marginRight: 105,
-    fontSize: 16,
-    color: '#444',
-    marginBottom: 15,
-  },
-  button: {
-    height: 42,
-    backgroundColor: '#00ff00',
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 2,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontWeight: 'bold',
-    fontSize: 16,
-  },
-});
