@@ -27,7 +27,7 @@ const routes = new Router();
 const upload = multer(multerConfig);
 
 // Sessions
-routes.post('/technicians/sessions', SessionController.store);
+routes.post('/session', SessionController.store);
 
 // Entities
 
@@ -63,12 +63,14 @@ routes.post(
   adminMiddleware,
   DepartmentController.store
 );
+
 routes.put(
   '/departments',
   authMiddleware,
   adminMiddleware,
   DepartmentController.update
 );
+
 routes.get('/departments', authMiddleware, DepartmentController.index);
 
 // Environments

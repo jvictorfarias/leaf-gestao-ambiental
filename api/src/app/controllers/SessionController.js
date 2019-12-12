@@ -14,7 +14,7 @@ class SessionController {
     });
 
     if (!(await schema.isValid(req.body))) {
-      return res.status(401).json({ error: 'Data missing' });
+      return res.status(400).json({ error: 'Data missing' });
     }
 
     const { email, password } = req.body;
@@ -26,7 +26,7 @@ class SessionController {
     }
 
     if (!(await technician.checkPassword(password))) {
-      return res.status(401).json({ error: 'Password does not match' });
+      return res.status(403).json({ error: 'Password does not match' });
     }
 
     // Email and passwords match

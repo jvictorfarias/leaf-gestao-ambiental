@@ -44,14 +44,15 @@ class Database {
   }
 
   mongo() {
-    this.mongoConnection = mongoose.connect(
-      `${process.env.MONGO_USER}:${process.env.MONGO_PASS}@${process.env.MONGO_URL}`,
-      {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: true,
-      }
-    );
+    this.mongoConnection = mongoose.connect(process.env.MONGO_URL, {
+      auth: {
+        user: process.env.MONGO_USER,
+        password: process.env.MONGO_PASS,
+      },
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      useFindAndModify: true,
+    });
   }
 }
 

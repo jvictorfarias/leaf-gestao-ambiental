@@ -1,21 +1,6 @@
 version: '3'
 
 services:
-  leaf-server:
-    build: .
-    volumes:
-      - .:/app
-    ports:
-      - '3333:3333'
-    links:
-      - postgres
-      - mongo
-    depends_on:
-      - postgres
-      - mongo
-    networks:
-      - app_net
-
   postgres:
     image: postgres
     environment:

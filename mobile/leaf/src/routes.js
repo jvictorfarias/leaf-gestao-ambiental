@@ -54,8 +54,8 @@ const home = createBottomTabNavigator(
 );
 
 const AppNavigator = createSwitchNavigator({
-  entry,
   home,
+  entry,
 });
 
 const routes = createAppContainer(AppNavigator);

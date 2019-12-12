@@ -4,7 +4,7 @@ import { Container, Elipse, Cadastrar, Entrar, CadastrarText } from './styles';
 
 export default function Main({ navigation }) {
   async function handlePress() {
-    navigation.navigate('Login');
+    navigation.navigate('home');
   }
 
   return (

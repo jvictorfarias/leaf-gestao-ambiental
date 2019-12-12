@@ -20,7 +20,43 @@ export default function Login({ navigation }) {
   const [type, setType] = useState(null);
 
   async function handleSubmit() {
-    navigation.navigate('home');
+    /*
+    if (password === '') {
+      Alert.alert('Senha em branco!');
+      return false;
+    }
+    if (email === '') {
+      Alert.alert('Digite seu email!');
+      return false;
+    }
+
+    try {
+      const response = await api.post('session', { email, password, type });
+
+      const { token } = response.data;
+      await AsyncStorage.setItem('tokenSession', token);
+    } catch (error) {
+      if (error.status === 401) {
+        Alert.alert('Usuário não encontrado!');
+        return false;
+      }
+      if (error.status === 403) {
+        Alert.alert('Credenciais Incorretas!');
+        return false;
+      }
+
+      if (error.status === 400) {
+        Alert.alert('Servidor Offline');
+        return false;
+      }
+
+      if (error.status === 500) {
+        Alert.alert('Servidor está instável.');
+        return false;
+      }
+    }
+    */
+    navigation.navigate('Main');
 
     return true;
   }

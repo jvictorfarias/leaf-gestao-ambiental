@@ -78,7 +78,7 @@ class TechnicianController {
 
     const { email, oldPassword } = req.body;
 
-    const technician = await Technician.findByPk(req.technicianId);
+    const technician = await Technician.findByPk(req.userId);
 
     if (email !== technician.email) {
       if (await Technician.findOne({ where: { email } })) {
