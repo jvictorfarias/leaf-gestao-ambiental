@@ -33,6 +33,14 @@ export const Cadastrar = styled(RectButton)`
   height: 36px;
 `;
 
+export const CadastrarText = styled.Text`
+  font-size: 14px;
+  color: #333;
+  font-weight: bold;
+  margin-top: 4px;
+  text-align: center;
+`;
+
 export const Entrar = styled(RectButton)`
   margin-top: 90px;
   margin-bottom: 400px;

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container, Elipse, Cadastrar, Entrar } from './styles';
+import { Container, Elipse, Cadastrar, Entrar, CadastrarText } from './styles';
 
 export default function Main({ navigation }) {
   async function handlePress() {
@@ -10,7 +10,9 @@ export default function Main({ navigation }) {
   return (
     <Container>
       <Elipse>
-        <Cadastrar title="cadastro" placeholder="Cadastrar" />
+        <Cadastrar title="cadastro" placeholder="Cadastrar">
+          <CadastrarText />
+        </Cadastrar>
         <Entrar onPress={handlePress} />
       </Elipse>
     </Container>
