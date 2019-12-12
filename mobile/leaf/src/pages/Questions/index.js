@@ -1,8 +1,11 @@
 import React from 'react';
-import { View } from 'react-native';
 
-// import { Container } from './styles';
+import { Container, Elipse } from './styles';
 
 export default function Questions() {
-  return <View />;
+  return (
+    <Container>
+      <Elipse />
+    </Container>
+  );
 }
